@@ -24,13 +24,18 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-#include <kernel.h>
+//#include <kernel.h> 
 
 #ifndef NQENT
 
+#define NTHREAD 10
+#define isbadtid(x) ((x)>=NTHREAD || (x)<0 )
+
 /** NQENT = 1 per thread, 2 per list, 2 per sem */
-#define NQENT   (NTHREAD + 4 + NSEM + NSEM)
+#define NQENT   (NTHREAD)
 #endif
+typedef int tid_typ;            /**< thread ID type                     */
+#define SYSERR   (-1)           /**< system call failed                 */
 
 #define EMPTY (-2)              /**< null pointer for queues            */
 #define MAXKEY 0x7FFFFFFF       /**< max key that can be saved in queue */
@@ -75,5 +80,6 @@ tid_typ dequeue(qid_typ);
 int insert(tid_typ, qid_typ, int);
 int insertd(tid_typ, qid_typ, int);
 qid_typ queinit(void);
+
 
 #endif                          /* _QUEUE_H_ */

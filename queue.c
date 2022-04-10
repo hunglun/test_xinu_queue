@@ -4,12 +4,8 @@
  */
 /* Embedded Xinu, Copyright (C) 2009.  All rights reserved. */
 
-#include <stddef.h>
-#include <thread.h>
 #include <queue.h>
-
 struct queent quetab[NQENT];    /**< global thread queue table       */
-
 /**
  * @ingroup threads
  *
