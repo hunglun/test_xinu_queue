@@ -32,11 +32,12 @@
 #define isbadtid(x) ((x)>=NTHREAD || (x)<0 )
 
 /** NQENT = 1 per thread, 2 per list, 2 per sem */
-#define NQENT   (NTHREAD)
+#define NQENT   (2*NTHREAD)
 #endif
 typedef int tid_typ;            /**< thread ID type                     */
-#define SYSERR   (-1)           /**< system call failed                 */
-
+#ifndef SYSERR
+  #define SYSERR   (-1)           /**< system call failed                 */
+#endif // SYSERR
 #define EMPTY (-2)              /**< null pointer for queues            */
 #define MAXKEY 0x7FFFFFFF       /**< max key that can be saved in queue */
 #define MINKEY 0x80000000       /**< min key that can be saved in queue */
